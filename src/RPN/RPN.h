@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 
+#include "../Debug/Debug.h"
 #include "../Token/Token.h"
 
 using std::complex;
@@ -28,7 +29,7 @@ struct RPN {
                                                      {"*", 2},
                                                      {"/", 2},
                                                      {"^", 3},
-                                                     {"_",4},
+                                                     {"_", 4},
                                                      {"sin", 5},
                                                      {"cos", 5},
                                                      {"log", 5},
@@ -36,9 +37,9 @@ struct RPN {
                                                      {"real", 5},
                                                      {"imag", 5},
                                                      {"exp", 5}};
-    bool isNumber(string &token);
-    complex<double> atoc(string a);
-    string convertComplex2String(complex<double> a);
+    static bool isNumber(string &token);
+    static complex<double> atoc(string a);
+    static string convertComplex2String(complex<double> a);
     vector<string> toPostfix(Token tk, const string &expression);
-    stack<complex<double>> calcRPN(vector<string> expRPN);
+    static stack<complex<double>> calcRPN(vector<string> expRPN);
 };

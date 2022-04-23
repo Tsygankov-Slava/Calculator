@@ -17,7 +17,7 @@ struct Variables {
     vector<string> variables;
     map<string, string> variableAndMeaning;
 
-    void replace(string &str, string &old, string &new_);
+    static void replace(string &str, string &old, string &new_);
     void changeVariablesInExpression(string &exp);
     void initVariables();
     void replacementVariables();

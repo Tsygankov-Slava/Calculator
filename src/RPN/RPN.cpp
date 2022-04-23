@@ -35,7 +35,7 @@ vector<string> RPN::toPostfix(Token tk, const string &expression) {
         if (CONSTANTS.count(token)) {
             token = CONSTANTS[token];
         }
-        cout << "Token -> " << token << "\n";
+        Debug::printToken(token);
         if (isNumber(token)) {
             result.push_back(token);
             may_unary = false;
@@ -54,7 +54,7 @@ vector<string> RPN::toPostfix(Token tk, const string &expression) {
             may_unary = false;
             stackOperations.pop();
         } else {
-            if(may_unary && token == "-") token = "_";
+            if (may_unary && token == "-") token = "_";
             while (!stackOperations.empty() && operationWeights[token] <= operationWeights[stackOperations.top()]) {
                 result.push_back(stackOperations.top());
                 stackOperations.pop();
@@ -71,7 +71,6 @@ vector<string> RPN::toPostfix(Token tk, const string &expression) {
 }
 
 stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
-    cout << "-------calcRPN-------\n";
     stack<complex<double>> result;
     set<string> operations = {"+", "-", "*", "/", "^"};
     set<string> functions = {"sin", "cos", "log", "sqrt", "exp", "real", "imag"};
@@ -85,59 +84,66 @@ stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
             a = result.top();
             result.pop();
             if (x == "+") {
-                cout << "Сложение равно: " << a + b << "| a = " << a << ", b = " << b << "\n";
+                Debug::printOperationPlus(a, b);
                 result.push(a + b);
             } else if (x == "-") {
-                cout << "Вычитание равно: " << a - b << "| a = " << a << ", b = " << b << "\n";
+                Debug::printOperationMinus(a, b);
                 result.push(a - b);
             } else if (x == "*") {
-                cout << "Умножение равно: " << a * b << "| a = " << a << ", b = " << b << "\n";
+                Debug::printOperationMultiply(a, b);
                 result.push(a * b);
             } else if (x == "/") {
-                cout << "Частное равно: " << a / b << "| a = " << a << ", b = " << b << "\n";
+                Debug::printOperationDivision(a, b);
                 result.push(a / b);
             } else if (x == "^") {
-                cout << "Возведение в степень равно: " << pow(a, b) << "| a = " << a << ", b = " << b << "\n";
+                Debug::printOperationDegree(a, b);
                 result.push(pow(a, b));
             }
         } else if (functions.contains(x)) {
             complex<double> a;
             a = result.top();
             result.pop();
-            if(x == "_") {
+            if (x == "_") {
                 result.push(-a);
+                Debug::printOperationUnMinus(a);
                 cout << "Функция un_minus: " << -a << "| a = " << a << "\n";
             } else if (x == "sin") {
                 result.push(sin(a));
+                Debug::printOperationSin(a);
                 cout << "Функция sin: " << sin(a) << "| a = " << a << "\n";
             } else if (x == "cos") {
                 result.push(cos(a));
+                Debug::printOperationCos(a);
                 cout << "Функция cos: " << cos(a) << "| a = " << a << "\n";
             } else if (x == "log") {
                 result.push(log(a));
+                Debug::printOperationLog(a);
                 cout << "Функция log: " << log(a) << "| a = " << a << "\n";
             } else if (x == "sqrt") {
                 result.push(sqrt(a));
+                Debug::printOperationSqrt(a);
                 cout << "Функция sqrt: " << sqrt(a) << "| a = " << a << "\n";
             } else if (x == "exp") {
                 result.push(exp(a));
+                Debug::printOperationExp(a);
                 cout << "Функция exp: " << exp(a) << "| a = " << a << "\n";
             } else if (x == "real") {
                 result.push(real(a));
+                Debug::printOperationReal(a);
                 cout << "Функция real: " << real(a) << "| a = " << a << "\n";
             } else if (x == "imag") {
                 result.push(imag(a));
+                Debug::printOperationImag(a);
                 cout << "Функция imag: " << imag(a) << "| a = " << a << "\n";
             }
         }
     }
-    cout << "----------------------\n";
     return result;
 }
 
 string RPN::convertComplex2String(complex<double> a) {
     string result = std::to_string(std::real(a));
-    if (std::imag(a)) {
+    if (std::imag(a) != 0) {
         result = result + "+" + std::to_string(std::imag(a)) + "i";
     }
     return result;

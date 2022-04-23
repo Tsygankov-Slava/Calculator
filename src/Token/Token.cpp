@@ -6,7 +6,7 @@ string Token::readToken(string const &token, int &index) {
     const set<char> separators{'\0', '(', ')', ' ', '+', '-', '/', '*', '^'};
     for (;; ++index) {
         if (separators.contains(token[index])) {
-            if (result == "") {
+            if (result.empty()) {
                 result = token[index];
                 ++index;
             }

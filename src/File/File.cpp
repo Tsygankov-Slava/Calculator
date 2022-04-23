@@ -5,8 +5,7 @@ map<string, string> File::getText() {
     map<string, string> arr;
     ifstream file;
     if (file.is_open()) {
-        cout << "File can't open.";
-        exit(2);
+        return arr;
     }
     file.open(File::path);
     while (getline(file, str)) {

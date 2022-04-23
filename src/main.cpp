@@ -1,47 +1,44 @@
+#include "Debug/Debug.h"
 #include "File/File.h"
 #include "RPN/RPN.h"
 #include "Token/Token.h"
 #include "Variables/Variables.h"
+#include "isDebug/isDebug.h"
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc > 1 && std::strcmp(argv[1], "-d") == 0) {
+        isDebug = true;
+    }
+
     File file;
     Variables var;
     Token tk;
     RPN rpn;
-    var.variableAndMeaning = file.getText();
 
-    cout << "\n--Исходные выражения--\n";
-    for (auto i : var.variableAndMeaning) cout << i.first << "=" << i.second << "\n";
-    cout << "----\n\n";
+    var.variableAndMeaning = file.getText();
+    if (var.variableAndMeaning.empty()) {
+        cout << "File can't open.";
+        return 0;
+    }
+
+    Debug::printSourceExpressions(var);
 
     var.initVariables();
 
-    cout << "\n--Все переменные--\n";
-    for (auto i : var.variables) cout << i << " ";
-    cout << "\n----\n\n";
+    Debug::printAllVariables(var);
 
     var.replacementVariables();
 
-    cout << "-----Выражения после замены----\n";
-    for (auto i : var.variableAndMeaning) cout << i.first << " " << i.second << "\n";
-    cout << "---------\n";
+    Debug::printExpressionsAfterReplacement(var);
 
     var.convertVariablesToNumber();
 
-    cout << "------\n";
     string exp = "exp(-i*pi*alpha*len/v0)";
-    cout << exp << "\n";
     if (!exp.empty()) {
         var.changeVariablesInExpression(exp);
         auto g = rpn.toPostfix(tk, exp);
-        for (auto i : g) cout << i << " ";
-        cout << "\n";
-        auto p = rpn.calcRPN(g);
-        cout << rpn.convertComplex2String(p.top());
-    } else {
-        cout << "Пустое выражение!";
-        exit(0);
+        auto p = RPN::calcRPN(g);
+        cout << RPN::convertComplex2String(p.top());
     }
     return 0;
 }
-
