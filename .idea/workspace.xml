@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7bfcd2e-b495-4c5f-ac9f-752b07993840" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +87,7 @@
       <workItem from="1650527638761" duration="71377000" />
       <workItem from="1650738316792" duration="70000" />
       <workItem from="1650738506721" duration="229000" />
-      <workItem from="1650738790834" duration="940000" />
+      <workItem from="1650738790834" duration="950000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1650739094585</created>
