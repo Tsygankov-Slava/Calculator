@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/tv/Desktop/Calc/src/File/File.h
+/Users/tv/Desktop/Calc/Calc/src/File/File.cpp
+File.h
+/Users/tv/Desktop/Calc/Calc/src/File/File.h
+
+/Users/tv/Desktop/Calc/Calc/src/File/File.h
 fstream
 -
 iostream
@@ -16,7 +20,11 @@ map
 string
 -
 
-/Users/tv/Desktop/Calc/src/RPN/RPN.h
+/Users/tv/Desktop/Calc/Calc/src/RPN/RPN.cpp
+RPN.h
+/Users/tv/Desktop/Calc/Calc/src/RPN/RPN.h
+
+/Users/tv/Desktop/Calc/Calc/src/RPN/RPN.h
 cmath
 -
 complex
@@ -32,9 +40,13 @@ string
 vector
 -
 ../Token/Token.h
-/Users/tv/Desktop/Calc/src/Token/Token.h
+/Users/tv/Desktop/Calc/Calc/src/Token/Token.h
 
-/Users/tv/Desktop/Calc/src/Token/Token.h
+/Users/tv/Desktop/Calc/Calc/src/Token/Token.cpp
+Token.h
+/Users/tv/Desktop/Calc/Calc/src/Token/Token.h
+
+/Users/tv/Desktop/Calc/Calc/src/Token/Token.h
 iostream
 -
 set
@@ -42,7 +54,11 @@ set
 string
 -
 
-/Users/tv/Desktop/Calc/src/Variables/Variables.h
+/Users/tv/Desktop/Calc/Calc/src/Variables/Variables.cpp
+Variables.h
+/Users/tv/Desktop/Calc/Calc/src/Variables/Variables.h
+
+/Users/tv/Desktop/Calc/Calc/src/Variables/Variables.h
 iostream
 -
 map
@@ -52,17 +68,17 @@ string
 vector
 -
 ../RPN/RPN.h
-/Users/tv/Desktop/Calc/src/RPN/RPN.h
+/Users/tv/Desktop/Calc/Calc/src/RPN/RPN.h
 ../Token/Token.h
-/Users/tv/Desktop/Calc/src/Token/Token.h
+/Users/tv/Desktop/Calc/Calc/src/Token/Token.h
 
-/Users/tv/Desktop/Calc/src/main.cpp
+/Users/tv/Desktop/Calc/Calc/src/main.cpp
 File/File.h
-/Users/tv/Desktop/Calc/src/File/File.h
+/Users/tv/Desktop/Calc/Calc/src/File/File.h
 RPN/RPN.h
-/Users/tv/Desktop/Calc/src/RPN/RPN.h
+/Users/tv/Desktop/Calc/Calc/src/RPN/RPN.h
 Token/Token.h
-/Users/tv/Desktop/Calc/src/Token/Token.h
+/Users/tv/Desktop/Calc/Calc/src/Token/Token.h
 Variables/Variables.h
-/Users/tv/Desktop/Calc/src/Variables/Variables.h
+/Users/tv/Desktop/Calc/Calc/src/Variables/Variables.h
 

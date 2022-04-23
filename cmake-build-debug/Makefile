@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tv/Desktop/Calc/src
+CMAKE_SOURCE_DIR = /Users/tv/Desktop/Calc/Calc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tv/Desktop/Calc/src/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/tv/Desktop/Calc/Calc/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles /Users/tv/Desktop/Calc/src/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles /Users/tv/Desktop/Calc/Calc/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,137 +117,137 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named src
+# Target rules for targets named Calc
 
 # Build rule for target.
-src: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src
-.PHONY : src
+Calc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Calc
+.PHONY : Calc
 
 # fast build rule for target.
-src/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/build
-.PHONY : src/fast
+Calc/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/build
+.PHONY : Calc/fast
 
-File/File.o: File/File.cpp.o
-.PHONY : File/File.o
-
-# target to build an object file
-File/File.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/File/File.cpp.o
-.PHONY : File/File.cpp.o
-
-File/File.i: File/File.cpp.i
-.PHONY : File/File.i
-
-# target to preprocess a source file
-File/File.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/File/File.cpp.i
-.PHONY : File/File.cpp.i
-
-File/File.s: File/File.cpp.s
-.PHONY : File/File.s
-
-# target to generate assembly for a file
-File/File.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/File/File.cpp.s
-.PHONY : File/File.cpp.s
-
-RPN/RPN.o: RPN/RPN.cpp.o
-.PHONY : RPN/RPN.o
+src/File/File.o: src/File/File.cpp.o
+.PHONY : src/File/File.o
 
 # target to build an object file
-RPN/RPN.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/RPN/RPN.cpp.o
-.PHONY : RPN/RPN.cpp.o
+src/File/File.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/File/File.cpp.o
+.PHONY : src/File/File.cpp.o
 
-RPN/RPN.i: RPN/RPN.cpp.i
-.PHONY : RPN/RPN.i
+src/File/File.i: src/File/File.cpp.i
+.PHONY : src/File/File.i
 
 # target to preprocess a source file
-RPN/RPN.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/RPN/RPN.cpp.i
-.PHONY : RPN/RPN.cpp.i
+src/File/File.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/File/File.cpp.i
+.PHONY : src/File/File.cpp.i
 
-RPN/RPN.s: RPN/RPN.cpp.s
-.PHONY : RPN/RPN.s
+src/File/File.s: src/File/File.cpp.s
+.PHONY : src/File/File.s
 
 # target to generate assembly for a file
-RPN/RPN.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/RPN/RPN.cpp.s
-.PHONY : RPN/RPN.cpp.s
+src/File/File.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/File/File.cpp.s
+.PHONY : src/File/File.cpp.s
 
-Token/Token.o: Token/Token.cpp.o
-.PHONY : Token/Token.o
+src/RPN/RPN.o: src/RPN/RPN.cpp.o
+.PHONY : src/RPN/RPN.o
 
 # target to build an object file
-Token/Token.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Token/Token.cpp.o
-.PHONY : Token/Token.cpp.o
+src/RPN/RPN.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/RPN/RPN.cpp.o
+.PHONY : src/RPN/RPN.cpp.o
 
-Token/Token.i: Token/Token.cpp.i
-.PHONY : Token/Token.i
+src/RPN/RPN.i: src/RPN/RPN.cpp.i
+.PHONY : src/RPN/RPN.i
 
 # target to preprocess a source file
-Token/Token.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Token/Token.cpp.i
-.PHONY : Token/Token.cpp.i
+src/RPN/RPN.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/RPN/RPN.cpp.i
+.PHONY : src/RPN/RPN.cpp.i
 
-Token/Token.s: Token/Token.cpp.s
-.PHONY : Token/Token.s
+src/RPN/RPN.s: src/RPN/RPN.cpp.s
+.PHONY : src/RPN/RPN.s
 
 # target to generate assembly for a file
-Token/Token.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Token/Token.cpp.s
-.PHONY : Token/Token.cpp.s
+src/RPN/RPN.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/RPN/RPN.cpp.s
+.PHONY : src/RPN/RPN.cpp.s
 
-Variables/Variables.o: Variables/Variables.cpp.o
-.PHONY : Variables/Variables.o
+src/Token/Token.o: src/Token/Token.cpp.o
+.PHONY : src/Token/Token.o
 
 # target to build an object file
-Variables/Variables.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Variables/Variables.cpp.o
-.PHONY : Variables/Variables.cpp.o
+src/Token/Token.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/Token/Token.cpp.o
+.PHONY : src/Token/Token.cpp.o
 
-Variables/Variables.i: Variables/Variables.cpp.i
-.PHONY : Variables/Variables.i
+src/Token/Token.i: src/Token/Token.cpp.i
+.PHONY : src/Token/Token.i
 
 # target to preprocess a source file
-Variables/Variables.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Variables/Variables.cpp.i
-.PHONY : Variables/Variables.cpp.i
+src/Token/Token.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/Token/Token.cpp.i
+.PHONY : src/Token/Token.cpp.i
 
-Variables/Variables.s: Variables/Variables.cpp.s
-.PHONY : Variables/Variables.s
+src/Token/Token.s: src/Token/Token.cpp.s
+.PHONY : src/Token/Token.s
 
 # target to generate assembly for a file
-Variables/Variables.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Variables/Variables.cpp.s
-.PHONY : Variables/Variables.cpp.s
+src/Token/Token.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/Token/Token.cpp.s
+.PHONY : src/Token/Token.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/Variables/Variables.o: src/Variables/Variables.cpp.o
+.PHONY : src/Variables/Variables.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/Variables/Variables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/Variables/Variables.cpp.o
+.PHONY : src/Variables/Variables.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/Variables/Variables.i: src/Variables/Variables.cpp.i
+.PHONY : src/Variables/Variables.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/Variables/Variables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/Variables/Variables.cpp.i
+.PHONY : src/Variables/Variables.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/Variables/Variables.s: src/Variables/Variables.cpp.s
+.PHONY : src/Variables/Variables.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/Variables/Variables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/Variables/Variables.cpp.s
+.PHONY : src/Variables/Variables.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Calc.dir/build.make CMakeFiles/Calc.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -257,22 +257,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... src"
-	@echo "... File/File.o"
-	@echo "... File/File.i"
-	@echo "... File/File.s"
-	@echo "... RPN/RPN.o"
-	@echo "... RPN/RPN.i"
-	@echo "... RPN/RPN.s"
-	@echo "... Token/Token.o"
-	@echo "... Token/Token.i"
-	@echo "... Token/Token.s"
-	@echo "... Variables/Variables.o"
-	@echo "... Variables/Variables.i"
-	@echo "... Variables/Variables.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... Calc"
+	@echo "... src/File/File.o"
+	@echo "... src/File/File.i"
+	@echo "... src/File/File.s"
+	@echo "... src/RPN/RPN.o"
+	@echo "... src/RPN/RPN.i"
+	@echo "... src/RPN/RPN.s"
+	@echo "... src/Token/Token.o"
+	@echo "... src/Token/Token.i"
+	@echo "... src/Token/Token.s"
+	@echo "... src/Variables/Variables.o"
+	@echo "... src/Variables/Variables.i"
+	@echo "... src/Variables/Variables.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

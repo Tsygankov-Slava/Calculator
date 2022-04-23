@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/src.dir/File/File.cpp.o"
-  "CMakeFiles/src.dir/RPN/RPN.cpp.o"
-  "CMakeFiles/src.dir/Token/Token.cpp.o"
-  "CMakeFiles/src.dir/Variables/Variables.cpp.o"
-  "CMakeFiles/src.dir/main.cpp.o"
+  "CMakeFiles/src.dir/src/File/File.cpp.o"
+  "CMakeFiles/src.dir/src/RPN/RPN.cpp.o"
+  "CMakeFiles/src.dir/src/Token/Token.cpp.o"
+  "CMakeFiles/src.dir/src/Variables/Variables.cpp.o"
+  "CMakeFiles/src.dir/src/main.cpp.o"
   "src"
   "src.pdb"
 )

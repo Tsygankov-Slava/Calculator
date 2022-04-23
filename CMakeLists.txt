@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
-project(src)
+project(Calc)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(src main.cpp File/File.h File/File.cpp Variables/Variables.cpp Variables/Variables.h Token/Token.cpp Token/Token.h RPN/RPN.cpp RPN/RPN.h)
+add_executable(Calc src/main.cpp src/File/File.h src/File/File.cpp src/Variables/Variables.cpp src/Variables/Variables.h src/Token/Token.cpp src/Token/Token.h src/RPN/RPN.cpp src/RPN/RPN.h)

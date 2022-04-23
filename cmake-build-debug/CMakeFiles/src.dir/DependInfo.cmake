@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/tv/Desktop/Calc/src/File/File.cpp" "/Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles/src.dir/File/File.cpp.o"
-  "/Users/tv/Desktop/Calc/src/RPN/RPN.cpp" "/Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles/src.dir/RPN/RPN.cpp.o"
-  "/Users/tv/Desktop/Calc/src/Token/Token.cpp" "/Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles/src.dir/Token/Token.cpp.o"
-  "/Users/tv/Desktop/Calc/src/Variables/Variables.cpp" "/Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles/src.dir/Variables/Variables.cpp.o"
-  "/Users/tv/Desktop/Calc/src/main.cpp" "/Users/tv/Desktop/Calc/src/cmake-build-debug/CMakeFiles/src.dir/main.cpp.o"
+  "/Users/tv/Desktop/Calc/Calc/src/File/File.cpp" "/Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles/src.dir/src/File/File.cpp.o"
+  "/Users/tv/Desktop/Calc/Calc/src/RPN/RPN.cpp" "/Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles/src.dir/src/RPN/RPN.cpp.o"
+  "/Users/tv/Desktop/Calc/Calc/src/Token/Token.cpp" "/Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles/src.dir/src/Token/Token.cpp.o"
+  "/Users/tv/Desktop/Calc/Calc/src/Variables/Variables.cpp" "/Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles/src.dir/src/Variables/Variables.cpp.o"
+  "/Users/tv/Desktop/Calc/Calc/src/main.cpp" "/Users/tv/Desktop/Calc/Calc/cmake-build-debug/CMakeFiles/src.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
