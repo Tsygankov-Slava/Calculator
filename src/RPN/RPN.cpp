@@ -106,35 +106,27 @@ stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
             if (x == "_") {
                 result.push(-a);
                 Debug::printOperationUnMinus(a);
-                cout << "Функция un_minus: " << -a << "| a = " << a << "\n";
             } else if (x == "sin") {
                 result.push(sin(a));
                 Debug::printOperationSin(a);
-                cout << "Функция sin: " << sin(a) << "| a = " << a << "\n";
             } else if (x == "cos") {
                 result.push(cos(a));
                 Debug::printOperationCos(a);
-                cout << "Функция cos: " << cos(a) << "| a = " << a << "\n";
             } else if (x == "log") {
                 result.push(log(a));
                 Debug::printOperationLog(a);
-                cout << "Функция log: " << log(a) << "| a = " << a << "\n";
             } else if (x == "sqrt") {
                 result.push(sqrt(a));
                 Debug::printOperationSqrt(a);
-                cout << "Функция sqrt: " << sqrt(a) << "| a = " << a << "\n";
             } else if (x == "exp") {
                 result.push(exp(a));
                 Debug::printOperationExp(a);
-                cout << "Функция exp: " << exp(a) << "| a = " << a << "\n";
             } else if (x == "real") {
                 result.push(real(a));
                 Debug::printOperationReal(a);
-                cout << "Функция real: " << real(a) << "| a = " << a << "\n";
             } else if (x == "imag") {
                 result.push(imag(a));
                 Debug::printOperationImag(a);
-                cout << "Функция imag: " << imag(a) << "| a = " << a << "\n";
             }
         }
     }
