@@ -3,8 +3,9 @@
 #include <complex>
 #include <iostream>
 
-#include "../Variables/Variables.h"
 #include "../isDebug/isDebug.h"
+#include "../Variables/Variables.h"
+
 
 using std::complex;
 using std::cout;

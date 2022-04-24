@@ -13,7 +13,7 @@ using std::map;
 using std::string;
 using std::vector;
 
-struct Variables {
+typedef struct Variables {
     vector<string> variables;
     map<string, string> variableAndMeaning;
 
@@ -22,4 +22,4 @@ struct Variables {
     void initVariables();
     void replacementVariables();
     void convertVariablesToNumber();
-};
+} Variables;
