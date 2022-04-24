@@ -1,8 +1,8 @@
 #include "Debug/Debug.h"
-#include "Variables/Variables.h"
 #include "File/File.h"
 #include "RPN/RPN.h"
 #include "Token/Token.h"
+#include "Variables/Variables.h"
 #include "isDebug/isDebug.h"
 
 int main(int argc, char *argv[]) {

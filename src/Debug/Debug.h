@@ -3,15 +3,18 @@
 #include <complex>
 #include <iostream>
 
-#include "../isDebug/isDebug.h"
 #include "../Variables/Variables.h"
+#include "../isDebug/isDebug.h"
 
 
 using std::complex;
 using std::cout;
 using std::string;
 
+typedef struct Variables Variables;
+
 struct Debug {
+
     static void printSourceExpressions(Variables &var);
     static void printAllVariables(Variables &var);
     static void printExpressionsAfterReplacement(Variables &var);
