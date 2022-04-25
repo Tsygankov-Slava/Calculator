@@ -35,7 +35,11 @@ int main(int argc, char *argv[]) {
     string exp = "exp(-i*pi*alpha*len/v0)";
     if (!exp.empty()) {
         var.changeVariablesInExpression(exp);
-        auto g = rpn.toPostfix(tk, exp);
+        auto g = rpn.toPostfix(exp);
+        for (auto &i : g) {
+            cout << i << " ";
+        }
+        cout << "\n";
         auto p = RPN::calcRPN(g);
         cout << RPN::convertComplex2String(p.top());
     }

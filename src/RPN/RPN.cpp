@@ -23,7 +23,7 @@ complex<double> RPN::atoc(string a) {
     return result;
 }
 
-vector<string> RPN::toPostfix(Token tk, const string &expression) {
+vector<string> RPN::toPostfix(const string &expression) {
     int index = 0, sizeExp = expression.size();
     bool may_unary = true;
     string token;
@@ -31,7 +31,7 @@ vector<string> RPN::toPostfix(Token tk, const string &expression) {
     stack<string> stackOperations;
     while (index < sizeExp) {
         token = "";
-        token = tk.readToken(expression, index);
+        token = Token::readToken(expression, index);
         if (CONSTANTS.count(token)) {
             token = CONSTANTS[token];
         }
@@ -73,7 +73,7 @@ vector<string> RPN::toPostfix(Token tk, const string &expression) {
 stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
     stack<complex<double>> result;
     set<string> operations = {"+", "-", "*", "/", "^"};
-    set<string> functions = {"sin", "cos", "log", "sqrt", "exp", "real", "imag"};
+    set<string> functions = {"_", "sin", "cos", "log", "sqrt", "exp", "real", "imag"};
     for (string &x : expRPN) {
         if (isNumber(x)) {
             result.push(atoc(x));
@@ -134,9 +134,13 @@ stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
 }
 
 string RPN::convertComplex2String(complex<double> a) {
-    string result = std::to_string(std::real(a));
-    if (std::imag(a) != 0) {
-        result = result + "+" + std::to_string(std::imag(a)) + "i";
-    }
-    return result;
+    std::ostringstream out;
+    out << a.real();
+    if (a.imag() > 0) {
+        out << "+";
+    } else
+        out << "-";
+    out << abs(a.imag());
+    out << "i";
+    return out.str();
 }

@@ -7,6 +7,7 @@
 #include <stack>
 #include <string>
 #include <vector>
+#include <sstream>
 
 #include "../Debug/Debug.h"
 #include "../Token/Token.h"
@@ -40,6 +41,6 @@ struct RPN {
     static bool isNumber(string &token);
     static complex<double> atoc(string a);
     static string convertComplex2String(complex<double> a);
-    vector<string> toPostfix(Token tk, const string &expression);
+    vector<string> toPostfix(const string &expression);
     static stack<complex<double>> calcRPN(vector<string> expRPN);
 };

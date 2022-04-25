@@ -9,8 +9,9 @@ void Variables::replace(string &str, string &old, string &new_) {
 }
 
 void Variables::changeVariablesInExpression(string &exp) {
-    for (auto i : variables) {
-        replace(exp, i, variableAndMeaning[i]);
+    for (auto &i : variables) {
+        string str = "("+variableAndMeaning[i]+")";
+        replace(exp, i, str);
     }
 }
 
@@ -32,11 +33,10 @@ void Variables::replacementVariables() {
 
 
 void Variables::convertVariablesToNumber() {
-    Token tk;
     RPN rpn;
     for (auto &i : variableAndMeaning) {
         string exp = i.second;
-        auto g = rpn.toPostfix(tk, exp);
+        auto g = rpn.toPostfix(exp);
         if (!g.empty()) {
             auto p = RPN::calcRPN(g);
             string str = RPN::convertComplex2String(p.top());
