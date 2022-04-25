@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <algorithm>
 
 using std::cout;
 using std::ifstream;
