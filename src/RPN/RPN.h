@@ -6,10 +6,10 @@
 #include <map>
 #include <stack>
 #include <string>
-#include <vector>
 
 #include "../Debug/Debug.h"
 #include "../Token/Token.h"
+#include "../Containers/Vector/Vector.h"
 
 struct RPN {
     std::map<const std::string, const std::string> CONSTANTS = {{"pi", std::to_string(M_PI)},
@@ -32,6 +32,6 @@ struct RPN {
     static bool isNumber(std::string &token);
     static std::complex<double> atoc(std::string a);
     static std::string convertComplex2String(std::complex<double> a);
-    std::vector<std::string> toPostfix(const std::string &expression);
-    static std::stack<std::complex<double>> calcRPN(std::vector<std::string> expRPN);
+    Vector toPostfix(const std::string &expression);
+    static std::stack<std::complex<double>> calcRPN(Vector expRPN);
 };

@@ -10,8 +10,8 @@ void Variables::replace(std::string &str, std::string &old, std::string &new_) {
 }
 
 void Variables::changeVariablesInExpression(std::string &exp) {
-    for (auto &i : variables) {
-        replace(exp, i, variableAndMeaning[i]);
+    for (int i = 0; i < variables.index; ++i) {
+        replace(exp, variables.arrString[i], variableAndMeaning[variables.arrString[i]]);
     }
 }
 
@@ -22,10 +22,10 @@ void Variables::initVariables() {
 }
 
 void Variables::replacementVariables() {
-    for (int n = 0; n < variables.size(); ++n) {
+    for (int n = 0; n < variables.index; ++n) {
         for (auto &i : variableAndMeaning) {
-            for (auto j : variables) {
-                replace(variableAndMeaning[i.first], j, variableAndMeaning[j]);
+           for (int j = 0; j < variables.index; ++j) {
+                replace(variableAndMeaning[i.first], variables.arrString[j], variableAndMeaning[variables.arrString[j]]);
             }
         }
     }
@@ -37,7 +37,7 @@ void Variables::convertVariablesToNumber() {
     for (auto &i : variableAndMeaning) {
         std::string exp = i.second;
         auto g = rpn.toPostfix(exp);
-        if (!g.empty()) {
+        if (!g.index) {
             auto p = RPN::calcRPN(g);
             std::string str = RPN::convertComplex2String(p.top());
             variableAndMeaning[i.first] = str;

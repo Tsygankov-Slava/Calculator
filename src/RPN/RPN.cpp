@@ -23,11 +23,11 @@ std::complex<double> RPN::atoc(std::string a) {
     return result;
 }
 
-std::vector<std::string> RPN::toPostfix(const std::string &expression) {
+Vector RPN::toPostfix(const std::string &expression) {
     int index = 0, sizeExp = expression.size();
     bool may_unary = true;
     std::string token;
-    std::vector<std::string> result;
+    Vector result;
     std::stack<std::string> stackOperations;
     while (index < sizeExp) {
         token = "";
@@ -70,61 +70,61 @@ std::vector<std::string> RPN::toPostfix(const std::string &expression) {
     return result;
 }
 
-std::stack<std::complex<double>> RPN::calcRPN(std::vector<std::string> expRPN) {
+std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
     std::stack<std::complex<double>> result;
     std::set<std::string> operations = {"+", "-", "*", "/", "^"};
     std::set<std::string> functions = {"_", "sin", "cos", "log", "sqrt", "exp", "real", "imag"};
-    for (std::string &x : expRPN) {
-        if (isNumber(x)) {
-            result.push(atoc(x));
-        } else if (operations.contains(x)) {
+    for (int x = 0; x < expRPN.index; ++x) {
+        if (isNumber(expRPN.arrString[x])) {
+            result.push(atoc(expRPN.arrString[x]));
+        } else if (operations.contains(expRPN.arrString[x])) {
             std::complex<double> a, b;
             b = result.top();
             result.pop();
             a = result.top();
             result.pop();
-            if (x == "+") {
+            if (expRPN.arrString[x] == "+") {
                 Debug::printOperationPlus(a, b);
                 result.push(a + b);
-            } else if (x == "-") {
+            } else if (expRPN.arrString[x] == "-") {
                 Debug::printOperationMinus(a, b);
                 result.push(a - b);
-            } else if (x == "*") {
+            } else if (expRPN.arrString[x] == "*") {
                 Debug::printOperationMultiply(a, b);
                 result.push(a * b);
-            } else if (x == "/") {
+            } else if (expRPN.arrString[x] == "/") {
                 Debug::printOperationDivision(a, b);
                 result.push(a / b);
-            } else if (x == "^") {
+            } else if (expRPN.arrString[x] == "^") {
                 Debug::printOperationDegree(a, b);
                 result.push(pow(a, b));
             }
-        } else if (functions.contains(x)) {
+        } else if (functions.contains(expRPN.arrString[x])) {
             std::complex<double> a;
             a = result.top();
             result.pop();
-            if (x == "_") {
+            if (expRPN.arrString[x] == "_") {
                 result.push(-a);
                 Debug::printOperationUnMinus(a);
-            } else if (x == "sin") {
+            } else if (expRPN.arrString[x] == "sin") {
                 result.push(sin(a));
                 Debug::printOperationSin(a);
-            } else if (x == "cos") {
+            } else if (expRPN.arrString[x] == "cos") {
                 result.push(cos(a));
                 Debug::printOperationCos(a);
-            } else if (x == "log") {
+            } else if (expRPN.arrString[x] == "log") {
                 result.push(log(a));
                 Debug::printOperationLog(a);
-            } else if (x == "sqrt") {
+            } else if (expRPN.arrString[x] == "sqrt") {
                 result.push(sqrt(a));
                 Debug::printOperationSqrt(a);
-            } else if (x == "exp") {
+            } else if (expRPN.arrString[x] == "exp") {
                 result.push(exp(a));
                 Debug::printOperationExp(a);
-            } else if (x == "real") {
+            } else if (expRPN.arrString[x] == "real") {
                 result.push(real(a));
                 Debug::printOperationReal(a);
-            } else if (x == "imag") {
+            } else if (expRPN.arrString[x] == "imag") {
                 result.push(imag(a));
                 Debug::printOperationImag(a);
             }

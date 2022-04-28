@@ -3,13 +3,13 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <vector>
 
 #include "../RPN/RPN.h"
 #include "../Token/Token.h"
+#include "../Containers/Vector/Vector.h"
 
 typedef struct Variables {
-    std::vector<std::string> variables;
+    Vector variables;
     std::map<std::string, std::string> variableAndMeaning;
 
     static void replace(std::string &str, std::string &old, std::string &new_);
