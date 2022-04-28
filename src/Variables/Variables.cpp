@@ -1,17 +1,17 @@
 #include "Variables.h"
 
-void Variables::replace(string &str, string &old, string &new_) {
+void Variables::replace(std::string &str, std::string &old, std::string &new_) {
     int pos = str.find(old);
     while (pos != -1) {
         str.replace(pos, old.size(), new_);
         pos = str.find(old);
     }
+    str = "(" + str + ")";
 }
 
-void Variables::changeVariablesInExpression(string &exp) {
+void Variables::changeVariablesInExpression(std::string &exp) {
     for (auto &i : variables) {
-        string str = "("+variableAndMeaning[i]+")";
-        replace(exp, i, str);
+        replace(exp, i, variableAndMeaning[i]);
     }
 }
 
@@ -35,11 +35,11 @@ void Variables::replacementVariables() {
 void Variables::convertVariablesToNumber() {
     RPN rpn;
     for (auto &i : variableAndMeaning) {
-        string exp = i.second;
+        std::string exp = i.second;
         auto g = rpn.toPostfix(exp);
         if (!g.empty()) {
             auto p = RPN::calcRPN(g);
-            string str = RPN::convertComplex2String(p.top());
+            std::string str = RPN::convertComplex2String(p.top());
             variableAndMeaning[i.first] = str;
         }
     }

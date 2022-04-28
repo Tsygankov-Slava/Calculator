@@ -8,17 +8,12 @@
 #include "../RPN/RPN.h"
 #include "../Token/Token.h"
 
-using std::cout;
-using std::map;
-using std::string;
-using std::vector;
-
 typedef struct Variables {
-    vector<string> variables;
-    map<string, string> variableAndMeaning;
+    std::vector<std::string> variables;
+    std::map<std::string, std::string> variableAndMeaning;
 
-    static void replace(string &str, string &old, string &new_);
-    void changeVariablesInExpression(string &exp);
+    static void replace(std::string &str, std::string &old, std::string &new_);
+    void changeVariablesInExpression(std::string &exp);
     void initVariables();
     void replacementVariables();
     void convertVariablesToNumber();

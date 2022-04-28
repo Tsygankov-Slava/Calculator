@@ -1,9 +1,9 @@
 #include "File.h"
 
-map<string, string> File::getText() {
-    string str, line;
-    map<string, string> arr;
-    ifstream file;
+std::map<std::string, std::string> File::getText() {
+    std::string str, line;
+    std::map<std::string, std::string> arr;
+    std::ifstream file;
     if (file.is_open()) {
         return arr;
     }

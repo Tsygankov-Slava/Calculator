@@ -11,12 +11,11 @@ int main(int argc, char *argv[]) {
 
     File file;
     Variables var;
-    Token tk;
     RPN rpn;
 
     var.variableAndMeaning = file.getText();
     if (var.variableAndMeaning.empty()) {
-        cout << "File can't open.";
+        std::cout << "File can't open.";
         return 0;
     }
 
@@ -32,16 +31,13 @@ int main(int argc, char *argv[]) {
 
     var.convertVariablesToNumber();
 
-    string exp = "exp(-i*pi*alpha*len/v0)";
+    std::string exp = "exp((-i)*(pi)*(alpha)*(len)/v0)";
     if (!exp.empty()) {
         var.changeVariablesInExpression(exp);
         auto g = rpn.toPostfix(exp);
-        for (auto &i : g) {
-            cout << i << " ";
-        }
-        cout << "\n";
+        std::cout << "\n";
         auto p = RPN::calcRPN(g);
-        cout << RPN::convertComplex2String(p.top());
+        std::cout << RPN::convertComplex2String(p.top());
     }
     return 0;
 }

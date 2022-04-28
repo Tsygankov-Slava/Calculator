@@ -4,9 +4,6 @@
 #include <set>
 #include <string>
 
-using std::set;
-using std::string;
-
 struct Token {
-    static string readToken(string const &token, int &index);
+    static std::string readToken(std::string const &token, int &index);
 };

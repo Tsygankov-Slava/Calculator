@@ -6,11 +6,6 @@
 #include "../Variables/Variables.h"
 #include "../isDebug/isDebug.h"
 
-
-using std::complex;
-using std::cout;
-using std::string;
-
 typedef struct Variables Variables;
 
 struct Debug {
@@ -19,20 +14,20 @@ struct Debug {
     static void printAllVariables(Variables &var);
     static void printExpressionsAfterReplacement(Variables &var);
 
-    static void printToken(string &token);
+    static void printToken(std::string &token);
 
-    static void printOperationPlus(complex<double> &a, complex<double> &b);
-    static void printOperationMinus(complex<double> &a, complex<double> &b);
-    static void printOperationMultiply(complex<double> &a, complex<double> &b);
-    static void printOperationDivision(complex<double> &a, complex<double> &b);
-    static void printOperationDegree(complex<double> &a, complex<double> &b);
-    static void printOperationUnMinus(complex<double> &a);
+    static void printOperationPlus(std::complex<double> &a, std::complex<double> &b);
+    static void printOperationMinus(std::complex<double> &a, std::complex<double> &b);
+    static void printOperationMultiply(std::complex<double> &a, std::complex<double> &b);
+    static void printOperationDivision(std::complex<double> &a, std::complex<double> &b);
+    static void printOperationDegree(std::complex<double> &a, std::complex<double> &b);
+    static void printOperationUnMinus(std::complex<double> &a);
 
-    static void printOperationSin(complex<double> &a);
-    static void printOperationCos(complex<double> &a);
-    static void printOperationLog(complex<double> &a);
-    static void printOperationSqrt(complex<double> &a);
-    static void printOperationExp(complex<double> &a);
-    static void printOperationReal(complex<double> &a);
-    static void printOperationImag(complex<double> &a);
+    static void printOperationSin(std::complex<double> &a);
+    static void printOperationCos(std::complex<double> &a);
+    static void printOperationLog(std::complex<double> &a);
+    static void printOperationSqrt(std::complex<double> &a);
+    static void printOperationExp(std::complex<double> &a);
+    static void printOperationReal(std::complex<double> &a);
+    static void printOperationImag(std::complex<double> &a);
 };

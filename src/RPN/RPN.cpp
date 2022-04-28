@@ -1,6 +1,6 @@
 #include "RPN.h"
 
-bool RPN::isNumber(string &token) {
+bool RPN::isNumber(std::string &token) {
     for (auto &i : token) {
         if ((i < '0' || i > '9') && i != '.' && i != 'i') {
             return false;
@@ -9,8 +9,8 @@ bool RPN::isNumber(string &token) {
     return true;
 }
 
-complex<double> RPN::atoc(string a) {
-    complex<double> result;
+std::complex<double> RPN::atoc(std::string a) {
+    std::complex<double> result;
     if (a[a.size() - 1] == 'i') {
         if (a.size() == 1) {
             result.imag(1);
@@ -23,12 +23,12 @@ complex<double> RPN::atoc(string a) {
     return result;
 }
 
-vector<string> RPN::toPostfix(const string &expression) {
+std::vector<std::string> RPN::toPostfix(const std::string &expression) {
     int index = 0, sizeExp = expression.size();
     bool may_unary = true;
-    string token;
-    vector<string> result;
-    stack<string> stackOperations;
+    std::string token;
+    std::vector<std::string> result;
+    std::stack<std::string> stackOperations;
     while (index < sizeExp) {
         token = "";
         token = Token::readToken(expression, index);
@@ -47,7 +47,7 @@ vector<string> RPN::toPostfix(const string &expression) {
                 result.push_back(stackOperations.top());
                 stackOperations.pop();
                 if (stackOperations.empty()) {
-                    cout << "ОШИБКА: НЕ НАШЛОСЬ ЛЕВОЙ СКОБКИ\n";
+                    std::cout << "ОШИБКА: НЕ НАШЛОСЬ ЛЕВОЙ СКОБКИ\n";
                     exit(1);
                 }
             }
@@ -70,15 +70,15 @@ vector<string> RPN::toPostfix(const string &expression) {
     return result;
 }
 
-stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
-    stack<complex<double>> result;
-    set<string> operations = {"+", "-", "*", "/", "^"};
-    set<string> functions = {"_", "sin", "cos", "log", "sqrt", "exp", "real", "imag"};
-    for (string &x : expRPN) {
+std::stack<std::complex<double>> RPN::calcRPN(std::vector<std::string> expRPN) {
+    std::stack<std::complex<double>> result;
+    std::set<std::string> operations = {"+", "-", "*", "/", "^"};
+    std::set<std::string> functions = {"_", "sin", "cos", "log", "sqrt", "exp", "real", "imag"};
+    for (std::string &x : expRPN) {
         if (isNumber(x)) {
             result.push(atoc(x));
         } else if (operations.contains(x)) {
-            complex<double> a, b;
+            std::complex<double> a, b;
             b = result.top();
             result.pop();
             a = result.top();
@@ -100,7 +100,7 @@ stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
                 result.push(pow(a, b));
             }
         } else if (functions.contains(x)) {
-            complex<double> a;
+            std::complex<double> a;
             a = result.top();
             result.pop();
             if (x == "_") {
@@ -133,14 +133,9 @@ stack<complex<double>> RPN::calcRPN(vector<string> expRPN) {
     return result;
 }
 
-string RPN::convertComplex2String(complex<double> a) {
-    std::ostringstream out;
-    out << a.real();
-    if (a.imag() > 0) {
-        out << "+";
-    } else
-        out << "-";
-    out << abs(a.imag());
-    out << "i";
-    return out.str();
+std::string RPN::convertComplex2String(std::complex<double> a) {
+    if (std::fabs(a.imag()) < 1e10) {
+        return std::to_string(a.real()) + " + " + std::to_string(a.imag()) + "i";
+    }
+    return std::to_string(a.real());
 }
