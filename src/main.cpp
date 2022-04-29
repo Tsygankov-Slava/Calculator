@@ -20,25 +20,29 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    Debug::printSourceExpressions(var);
 
-    var.initVariables();
+    //std::string exp = "exp(-i*pi*alpha*len/v0)";
+    std::string exp;
+    while (std::cout << "Введите выражение -> ", std::getline(std::cin, exp), (exp == "exit") ? 0 : 1) {
+        Debug::printSourceExpressions(var);
 
-    Debug::printAllVariables(var);
+        var.initVariables();
 
-    var.replacementVariables();
+        Debug::printAllVariables(var);
 
-    Debug::printExpressionsAfterReplacement(var);
+        var.replacementVariables();
 
-    var.convertVariablesToNumber();
+        Debug::printExpressionsAfterReplacement(var);
 
-    std::string exp = "exp(-i*pi*alpha*len/v0)";
-    if (!exp.empty()) {
-        var.changeVariablesInExpression(exp);
-        auto g = rpn.toPostfix(exp);
+        var.convertVariablesToNumber();
+        if (!exp.empty()) {
+            var.changeVariablesInExpression(exp);
+            auto g = rpn.toPostfix(exp);
+            std::cout << "\n";
+            auto p = RPN::calcRPN(g);
+            std::cout <<  "Ответ: "<< RPN::convertComplex2String(p.top());
+        }
         std::cout << "\n";
-        auto p = RPN::calcRPN(g);
-        std::cout << RPN::convertComplex2String(p.top());
     }
     return 0;
 }
