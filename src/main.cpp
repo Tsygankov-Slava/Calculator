@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
     var.convertVariablesToNumber();
 
-    std::string exp = "exp((-i)*(pi)*(alpha)*(len)/v0)";
+    std::string exp = "exp(-i*pi*alpha*len/v0)";
     if (!exp.empty()) {
         var.changeVariablesInExpression(exp);
         auto g = rpn.toPostfix(exp);
