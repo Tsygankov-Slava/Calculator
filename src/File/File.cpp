@@ -10,7 +10,7 @@ std::map<std::string, std::string> File::getText() {
     file.open(File::path);
     while (getline(file, str)) {
         int index = 0;
-        std::string::iterator end_pos = std::remove(str.begin(), str.end(), ' '); // Написать функцию удаления символа из строки
+        std::string::iterator end_pos = std::remove(str.begin(), str.end(), ' ');// Написать функцию удаления символа из строки
         str.erase(end_pos, str.end());
 
         std::string::iterator end_pos2 = std::remove(str.begin(), str.end(), '\r');

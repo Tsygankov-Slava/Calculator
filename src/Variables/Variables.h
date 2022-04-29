@@ -4,9 +4,9 @@
 #include <map>
 #include <string>
 
+#include "../Containers/Vector/Vector.h"
 #include "../RPN/RPN.h"
 #include "../Token/Token.h"
-#include "../Containers/Vector/Vector.h"
 
 typedef struct Variables {
     Vector variables;

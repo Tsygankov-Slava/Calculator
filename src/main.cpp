@@ -1,9 +1,9 @@
+#include "Containers/Vector/Vector.h"
 #include "Debug/Debug.h"
 #include "File/File.h"
 #include "RPN/RPN.h"
 #include "Token/Token.h"
 #include "isDebug/isDebug.h"
-#include "Containers/Vector/Vector.h"
 
 int main(int argc, char *argv[]) {
     if (argc > 1 && std::strcmp(argv[1], "-d") == 0) {

@@ -73,7 +73,7 @@ Vector RPN::toPostfix(const std::string &expression) {
 std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
     std::stack<std::complex<double>> result;
     std::set<std::string> operations = {"+", "-", "*", "/", "^"};
-    std::set<std::string> functions = {"_", "sin", "cos", "log", "sqrt", "exp", "real", "imag"};
+    std::set<std::string> functions = {"_", "phase", "mag", "sin", "cos", "log", "sqrt", "exp", "real", "imag"};
     for (int x = 0; x < expRPN.index; ++x) {
         if (isNumber(expRPN.arrString[x])) {
             result.push(atoc(expRPN.arrString[x]));
@@ -103,7 +103,11 @@ std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
             std::complex<double> a;
             a = result.top();
             result.pop();
-            if (expRPN.arrString[x] == "_") {
+            if (expRPN.arrString[x] == "phase") {
+                result.push(arg(a));
+            } else if (expRPN.arrString[x] == "mag") {
+                result.push(abs(a));
+            } else if (expRPN.arrString[x] == "_") {
                 result.push(-a);
                 Debug::printOperationUnMinus(a);
             } else if (expRPN.arrString[x] == "sin") {

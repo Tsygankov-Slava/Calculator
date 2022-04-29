@@ -1,8 +1,8 @@
 #pragma once
 
+#include <cstring>
 #include <iostream>
 #include <string>
-#include <cstring>
 
 struct Vector {
 public:
@@ -13,7 +13,6 @@ public:
     std::string *arrString = new std::string[size];
 
 public:
-
     void push_back(std::string variable);
     void push_back(int variable);
 
@@ -22,5 +21,4 @@ public:
 
     void printVectorString();
     void printVectorInt();
-
 };

@@ -24,7 +24,7 @@ void Variables::initVariables() {
 void Variables::replacementVariables() {
     for (int n = 0; n < variables.index; ++n) {
         for (auto &i : variableAndMeaning) {
-           for (int j = 0; j < variables.index; ++j) {
+            for (int j = 0; j < variables.index; ++j) {
                 replace(variableAndMeaning[i.first], variables.arrString[j], variableAndMeaning[variables.arrString[j]]);
             }
         }

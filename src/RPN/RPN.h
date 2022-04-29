@@ -7,9 +7,9 @@
 #include <stack>
 #include <string>
 
+#include "../Containers/Vector/Vector.h"
 #include "../Debug/Debug.h"
 #include "../Token/Token.h"
-#include "../Containers/Vector/Vector.h"
 
 struct RPN {
     std::map<const std::string, const std::string> CONSTANTS = {{"pi", std::to_string(M_PI)},
@@ -22,6 +22,8 @@ struct RPN {
                                                                {"/", 2},
                                                                {"^", 3},
                                                                {"_", 4},
+                                                               {"phase", 5},
+                                                               {"mag", 5},
                                                                {"sin", 5},
                                                                {"cos", 5},
                                                                {"log", 5},

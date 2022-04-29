@@ -10,7 +10,7 @@ void Debug::printSourceExpressions(Variables &var) {
 void Debug::printAllVariables(Variables &var) {
     if (isDebug) {
         std::cout << "\n--Все переменные--\n";
-        for (int i = 0; i < var.variables.index; ++i) std::cout <<  var.variables.arrString[i] << " ";
+        for (int i = 0; i < var.variables.index; ++i) std::cout << var.variables.arrString[i] << " ";
         std::cout << "\n----\n\n";
     }
 }
