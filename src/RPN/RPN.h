@@ -10,10 +10,11 @@
 #include "../Containers/Vector/Vector.h"
 #include "../Debug/Debug.h"
 #include "../Token/Token.h"
+#include "../Variables/Variables.h"
 
 struct RPN {
-    std::map<const std::string, const std::string> CONSTANTS = {{"pi", std::to_string(M_PI)},
-                                                                {"e", std::to_string(M_E)}};
+    std::map<const std::string, const std::string> CONSTANTS = {{"PI", std::to_string(M_PI)},
+                                                                {"E", std::to_string(M_E)}};
 
     std::map<const std::string, const int> operationWeights = {{"(", 0},
                                                                {"+", 1},
@@ -32,8 +33,9 @@ struct RPN {
                                                                {"imag", 5},
                                                                {"exp", 5}};
     static bool isNumber(std::string &token);
+    static bool isVariable(std::string &token, struct Variables var);
     static std::complex<double> atoc(std::string a);
     static std::string convertComplex2String(std::complex<double> a);
-    Vector toPostfix(const std::string &expression);
+    Vector toPostfix(const std::string &expression, Variables &var);
     static std::stack<std::complex<double>> calcRPN(Vector expRPN);
 };

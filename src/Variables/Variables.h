@@ -12,9 +12,8 @@ typedef struct Variables {
     Vector variables;
     std::map<std::string, std::string> variableAndMeaning;
 
-    static void replace(std::string &str, std::string &old, std::string &new_);
-    void changeVariablesInExpression(std::string &exp);
     void initVariables();
-    void replacementVariables();
-    void convertVariablesToNumber();
+    void ReplacementVariables();
+    bool isVariable(std::string &token);
+    void changeVariablesInExpression(std::string &exp);
 } Variables;

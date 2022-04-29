@@ -1,5 +1,14 @@
 #include "RPN.h"
 
+bool RPN::isVariable(std::string &token, Variables var) {
+    for (int i = 0; i < var.variables.index; ++i) {
+        if (token == var.variables.arrString[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool RPN::isNumber(std::string &token) {
     for (auto &i : token) {
         if ((i < '0' || i > '9') && i != '.' && i != 'i') {
@@ -23,7 +32,7 @@ std::complex<double> RPN::atoc(std::string a) {
     return result;
 }
 
-Vector RPN::toPostfix(const std::string &expression) {
+Vector RPN::toPostfix(const std::string &expression, Variables &var) {
     int index = 0, sizeExp = expression.size();
     bool may_unary = true;
     std::string token;
@@ -36,7 +45,10 @@ Vector RPN::toPostfix(const std::string &expression) {
             token = CONSTANTS[token];
         }
         Debug::printToken(token);
-        if (isNumber(token)) {
+        if (isVariable(token, var)) {
+            result.push_back(var.variableAndMeaning[token]);
+            may_unary = false;
+        } else if (isNumber(token)) {
             result.push_back(token);
             may_unary = false;
         } else if (token == "(") {
@@ -138,8 +150,16 @@ std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
 }
 
 std::string RPN::convertComplex2String(std::complex<double> a) {
-    if (std::fabs(a.imag()) < 1e10) {
-        return std::to_string(a.real()) + " + " + std::to_string(a.imag()) + "i";
+    std::string real = std::to_string(a.real());
+    std::string imag = std::to_string(a.imag()) + "i";
+    if (a.real() < 0) {
+        real = "(" + real + ")";
+    }
+    if (a.imag() < 0) {
+        imag = "(" + imag + ")";
+    }
+    if (std::fabs(a.imag()) < 1e20) {
+        return real + " + " + imag;
     }
     return std::to_string(a.real());
 }

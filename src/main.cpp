@@ -2,7 +2,6 @@
 #include "Debug/Debug.h"
 #include "File/File.h"
 #include "RPN/RPN.h"
-#include "Token/Token.h"
 #include "isDebug/isDebug.h"
 
 int main(int argc, char *argv[]) {
@@ -20,8 +19,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-
-    //std::string exp = "exp(-i*pi*alpha*len/v0)";
     std::string exp;
     while (std::cout << "Введите выражение -> ", std::getline(std::cin, exp), (exp == "exit") ? 0 : 1) {
         Debug::printSourceExpressions(var);
@@ -30,17 +27,15 @@ int main(int argc, char *argv[]) {
 
         Debug::printAllVariables(var);
 
-        var.replacementVariables();
+        var.ReplacementVariables();
 
         Debug::printExpressionsAfterReplacement(var);
-
-        var.convertVariablesToNumber();
         if (!exp.empty()) {
             var.changeVariablesInExpression(exp);
-            auto g = rpn.toPostfix(exp);
+            auto g = rpn.toPostfix(exp, var);
             std::cout << "\n";
             auto p = RPN::calcRPN(g);
-            std::cout <<  "Ответ: "<< RPN::convertComplex2String(p.top());
+            std::cout << "Ответ: " << RPN::convertComplex2String(p.top());
         }
         std::cout << "\n";
     }
