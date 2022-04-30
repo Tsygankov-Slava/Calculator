@@ -8,6 +8,6 @@
 
 
 struct File {
-    std::string path = "/Users/tv/Desktop/Calculator/src/variables.txt";
+    std::string path = "../src/File/variables.txt";
     std::map<std::string, std::string> getText();
 };
