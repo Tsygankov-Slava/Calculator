@@ -5,19 +5,17 @@
 #include "isDebug/isDebug.h"
 
 int main(int argc, char *argv[]) {
-    if (argc > 1 && std::strcmp(argv[1], "-d") == 0) {
-        isDebug = true;
-    }
-
     File file;
     Variables var;
     RPN rpn;
 
-    var.variableAndMeaning = file.getText();
-    if (var.variableAndMeaning.empty()) {
-        std::cout << "File can't open.";
-        return 0;
+    if (argc > 1) {
+        if (std::strcmp(argv[1], "-d") == 0) {
+            isDebug = true;
+        }
     }
+
+    var.variableAndMeaning = file.getText();
 
     std::string exp;
     while (std::cout << "Введите выражение -> ", std::getline(std::cin, exp), (exp == "exit") ? 0 : 1) {

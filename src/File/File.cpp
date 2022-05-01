@@ -3,7 +3,7 @@
 std::map<std::string, std::string> File::getText() {
     std::string str, line;
     std::map<std::string, std::string> arr;
-    std::ifstream file (File::path);
+    std::ifstream file (path);
 
     if (file) {
         while (getline(file, str)) {

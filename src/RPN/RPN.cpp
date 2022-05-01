@@ -89,7 +89,7 @@ std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
     for (int x = 0; x < expRPN.index; ++x) {
         if (isNumber(expRPN.arrString[x])) {
             result.push(atoc(expRPN.arrString[x]));
-        } else if (operations.contains(expRPN.arrString[x])) {
+        } else if (operations.count(expRPN.arrString[x])) {
             std::complex<double> a, b;
             b = result.top();
             result.pop();
@@ -111,7 +111,7 @@ std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
                 Debug::printOperationDegree(a, b);
                 result.push(pow(a, b));
             }
-        } else if (functions.contains(expRPN.arrString[x])) {
+        } else if (functions.count(expRPN.arrString[x])) {
             std::complex<double> a;
             a = result.top();
             result.pop();

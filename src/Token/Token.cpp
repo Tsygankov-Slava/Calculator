@@ -5,7 +5,7 @@ std::string Token::readToken(std::string const &token, int &index) {
     while (token[index] == ' ') ++index;
     const std::set<char> separators{'\0', '(', ')', ' ', '+', '-', '/', '*', '^'};
     for (;; ++index) {
-        if (separators.contains(token[index])) {
+        if (separators.count(token[index])) {
             if (result.empty()) {
                 result = token[index];
                 ++index;
