@@ -20,3 +20,11 @@ std::map<std::string, std::string> File::getText() {
     }
     return arr;
 }
+
+void File::checkFileAccess(Variables &var) {
+    if (path != " ") {
+        var.variableAndMeaning = getText();
+    } else {
+        std::cout << "Warning: Нет доступа к файлу с переменными\n";
+    }
+}

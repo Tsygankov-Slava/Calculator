@@ -2,30 +2,31 @@
 #include "Debug/Debug.h"
 #include "File/File.h"
 #include "RPN/RPN.h"
-#include "isDebug/isDebug.h"
+#include "Arguments/Arguments.h"
 
 int main(int argc, char *argv[]) {
     File file;
     Variables var;
     RPN rpn;
 
-    for (int i = 0; i < argc; ++i) {
-        if (std::strcmp(argv[i], "-d") == 0) {
-            isDebug = true;
-        }
-        if (std::strcmp(argv[i], "-variables") == 0) {
-            file.path = argv[i+1];
-        }
-    }
-
-    if (file.path != " ") {
-        var.variableAndMeaning = file.getText();
-    } else {
-        std::cout << "Warning: Нет доступа к файлу с переменными\n";
-    }
-
     std::string exp;
-    while (std::cout << "Введите выражение -> ", std::getline(std::cin, exp), (exp == "exit") ? 0 : 1) {
+
+    Arguments arguments;
+    arguments.checkArguments(argc, argv, exp, file);
+
+    file.checkFileAccess(var);
+
+    while (true) {
+        if (exp.empty()) {
+            std::cout << "Введите выражение -> ";
+            std::getline(std::cin, exp);
+            if (exp == "exit") {
+                return 0;
+            }
+        } else {
+            std::cout << "Полученное выражение -> " << exp << "\n";
+        }
+
         Debug::printSourceExpressions(var);
 
         var.initVariables();
@@ -43,6 +44,6 @@ int main(int argc, char *argv[]) {
             std::cout << "Ответ: " << RPN::convertComplex2String(p.top());
         }
         std::cout << "\n";
+        exp = "";
     }
-    return 0;
 }
