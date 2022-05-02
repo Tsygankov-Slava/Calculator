@@ -15,7 +15,7 @@
 # Установка
 1. Клонируем репозиторий на компьютер
 ```
- $ git clone https://github.com/Tsygankov-Slava/Calculator.git
+$ git clone https://github.com/Tsygankov-Slava/Calculator.git
  ```
 4. Перейдём в папку `./Calculator`с проектом
 ```
