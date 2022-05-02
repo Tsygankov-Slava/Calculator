@@ -8,7 +8,7 @@
 
 
 struct File {
-    std::string path = "../src/File/variables.txt";
+    std::string path = " ";
 
     std::map<std::string, std::string> getText();
 };

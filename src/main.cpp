@@ -9,13 +9,20 @@ int main(int argc, char *argv[]) {
     Variables var;
     RPN rpn;
 
-    if (argc > 1) {
-        if (std::strcmp(argv[1], "-d") == 0) {
+    for (int i = 0; i < argc; ++i) {
+        if (std::strcmp(argv[i], "-d") == 0) {
             isDebug = true;
+        }
+        if (std::strcmp(argv[i], "-variables") == 0) {
+            file.path = argv[i+1];
         }
     }
 
-    var.variableAndMeaning = file.getText();
+    if (file.path != " ") {
+        var.variableAndMeaning = file.getText();
+    } else {
+        std::cout << "Warning: Нет доступа к файлу с переменными\n";
+    }
 
     std::string exp;
     while (std::cout << "Введите выражение -> ", std::getline(std::cin, exp), (exp == "exit") ? 0 : 1) {
