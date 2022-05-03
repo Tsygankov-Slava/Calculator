@@ -13,4 +13,5 @@ struct File {
 
     std::map<std::string, std::string> getText();
     void checkFileAccess(Variables &var);
+    void addVariable(std::string &str);
 };

@@ -44,3 +44,10 @@ void Variables::changeVariablesInExpression(std::string &exp) {
         }
     }
 }
+
+bool Variables::variableDefinition(std::string &str) {
+    if (str.find('=') != std::string::npos) {
+        return true;
+    }
+    return false;
+}
