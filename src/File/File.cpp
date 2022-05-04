@@ -43,5 +43,5 @@ void File::addVariable(std::string &str) {
 }
 
 bool File::checkFileHistoryAccess() {
-    return !(pathHistory == " ");
+    return (pathHistory != " ");
 }
