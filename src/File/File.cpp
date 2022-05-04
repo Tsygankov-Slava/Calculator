@@ -3,7 +3,7 @@
 std::map<std::string, std::string> File::getText() {
     std::string str, line;
     std::map<std::string, std::string> arr;
-    std::ifstream file(path);
+    std::ifstream file(pathVariables);
 
     if (file) {
         while (getline(file, str)) {
@@ -26,8 +26,8 @@ std::map<std::string, std::string> File::getText() {
     return arr;
 }
 
-void File::checkFileAccess(Variables &var) {
-    if (path != " ") {
+void File::checkFileVariablesAccess(Variables &var) {
+    if (pathVariables != " ") {
         var.variableAndMeaning = getText();
     } else {
         std::cout << "Warning: Нет доступа к файлу с переменными\n";
@@ -36,8 +36,16 @@ void File::checkFileAccess(Variables &var) {
 
 void File::addVariable(std::string &str) {
     std::ofstream file;
-    file.open(path, std::ios::app);
+    file.open(pathVariables, std::ios::app);
     file << "\n" + str;
     file.close();
     std::cout << "Переменная успешно добавлена!\n";
+}
+
+bool File::checkFileHistoryAccess() {
+    if (pathHistory == " ") {
+        std::cout << "Warning: Доступ к файлу для записи истории не был предоставлен!\n";
+        return false;
+    }
+    return true;
 }

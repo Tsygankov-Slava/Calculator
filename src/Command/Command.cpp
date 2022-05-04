@@ -1,24 +1,32 @@
 #include "Command.h"
 
-bool Command::isCommand(std::string &str, Variables &var, File &file) {
+bool Command::isCommand(std::string &str, Variables &var, File &file, History &history) {
     if (str == "-help") {
-        std::cout << "|------------------------------------------------------------------------------|\n";
-        std::cout << "| -help -> Подскажет всевозможные команды                                      |\n";
-        std::cout << "| -out all -> Выведет файл с переменными                                       |\n";
-        std::cout << "| -out var -> Выведет значение переменной var, можно через запятую [var1,var2] |\n";
-        std::cout << "| -del all -> Удалит весь файл с переменными                                   |\n";
-        std::cout << "| -del var -> Удалит переменную из файла                                       |\n";
-        std::cout << "| -exit -> Завершит работу калькулятора                                        |\n";
-        std::cout << "|------------------------------------------------------------------------------|\n\n";
+        std::cout << "|---------------------------------------------------------------------------------|\n";
+        std::cout << "| -help -> Подскажет всевозможные команды                                         |\n";
+        std::cout << "| -outVar all -> Выведет файл с переменными                                       |\n";
+        std::cout << "| -outVar var -> Выведет значение переменной var, можно через запятую [var1,var2] |\n";
+        std::cout << "| -delVar all -> Удалит весь файл с переменными                                   |\n";
+        std::cout << "| -delVar var -> Удалит переменную из файла                                       |\n";
+        std::cout << "| -outHis -> Выведет историю вычислений выражений                                 |\n";
+        std::cout << "| -delHis -> Удалит историю вычислений выражений                                  |\n";
+        std::cout << "| -exit -> Завершит работу калькулятора                                           |\n";
+        std::cout << "|---------------------------------------------------------------------------------|\n\n";
         return true;
     } else {
         std::string cmd1 = str.substr(0, str.find(' '));
         std::string cmd2 = str.substr(str.find(' ') + 1, str.size());
-        if (cmd1 == "-out") {
+        if (cmd1 == "-outVar") {
             outVariables(var.variableAndMeaning, cmd2);
             return true;
-        } else if (cmd1 == "-del") {
+        } else if (cmd1 == "-delVar") {
             delVariables(var, cmd2, file);
+            return true;
+        } else if (cmd1 == "-outHis") {
+            history.outHistory(file.pathHistory);
+            return true;
+        } else if (cmd1 == "-delHis") {
+            history.clearHistory(file.pathHistory);
             return true;
         }
     }
@@ -55,7 +63,7 @@ void Command::delVariables(Variables &var, std::string &v, File &file) {
     if (!var.variableAndMeaning.empty()) {
         std::ofstream f;
         if (v == "all") {
-            f.open(file.path, std::ios_base::trunc);
+            f.open(file.pathVariables, std::ios_base::trunc);
             var.variableAndMeaning.clear();
             var.variables.index = 0;
             var.variables.size = 100;
@@ -97,7 +105,7 @@ Vector Command::getVariables(std::string &str) {
 
 void Command::deleteVarInFile(File file, std::string var) {
     std::string text, line, strVar;
-    std::ifstream f(file.path);
+    std::ifstream f(file.pathVariables);
     while (getline(f, line)) {
         strVar = "";
         int i = 0;
@@ -111,6 +119,6 @@ void Command::deleteVarInFile(File file, std::string var) {
             text += line + "\n";
         }
     }
-    std::ofstream fOut(file.path);
+    std::ofstream fOut(file.pathVariables);
     fOut << text;
 }

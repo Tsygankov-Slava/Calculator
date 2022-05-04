@@ -9,9 +9,11 @@
 #include "../Variables/Variables.h"
 
 struct File {
-    std::string path = " ";
-
+    std::string pathVariables = " ";
+    std::string pathHistory = " ";
     std::map<std::string, std::string> getText();
-    void checkFileAccess(Variables &var);
+
+    void checkFileVariablesAccess(Variables &var);
+    bool checkFileHistoryAccess();
     void addVariable(std::string &str);
 };

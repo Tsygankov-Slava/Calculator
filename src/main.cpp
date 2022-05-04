@@ -3,6 +3,7 @@
 #include "Containers/Vector/Vector.h"
 #include "Debug/Debug.h"
 #include "File/File.h"
+#include "History/History.h"
 #include "RPN/RPN.h"
 
 int main(int argc, char *argv[]) {
@@ -10,14 +11,15 @@ int main(int argc, char *argv[]) {
     Variables var;
     RPN rpn;
     Command cmd;
-
+    History history;
     std::string exp;
 
     Arguments arguments;
     arguments.checkArguments(argc, argv, exp, file);
 
     while (true) {
-        file.checkFileAccess(var);
+        file.checkFileVariablesAccess(var);
+        file.checkFileHistoryAccess();
 
         Debug::printSourceExpressions(var);
 
@@ -36,7 +38,7 @@ int main(int argc, char *argv[]) {
                 std::cout << "Калькулятор закончил работу!\n";
                 return 0;
             }
-            if (cmd.isCommand(exp, var, file)) {
+            if (cmd.isCommand(exp, var, file, history)) {
                 exp = "";
                 continue;
             }
@@ -53,6 +55,9 @@ int main(int argc, char *argv[]) {
                 std::cout << "\n";
                 auto p = RPN::calcRPN(g);
                 std::cout << "Ответ: " << RPN::convertComplex2String(p.top());
+                if (file.checkFileHistoryAccess()) {
+                    history.inHistory(file.pathHistory, exp + " = " + RPN::convertComplex2String(p.top()));
+                }
             }
         }
         std::cout << "\n";
