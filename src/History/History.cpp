@@ -13,10 +13,15 @@ void History::outHistory(std::string &path) {
 
     std::cout << "|--------------\n";
     std::string line;
+    bool flag = true;
     while (getline(file, line)) {
         if (line != "") {
             std::cout << "|" << line << "\n";
+            flag = false;
         }
+    }
+    if (flag) {
+        std::cout << "| Нет данных о вычислениях\n";
     }
     std::cout << "|--------------\n";
     file.close();
