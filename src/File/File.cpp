@@ -43,9 +43,5 @@ void File::addVariable(std::string &str) {
 }
 
 bool File::checkFileHistoryAccess() {
-    if (pathHistory == " ") {
-        std::cout << "Warning: Доступ к файлу для записи истории не был предоставлен!\n";
-        return false;
-    }
-    return true;
+    return !(pathHistory == " ");
 }
