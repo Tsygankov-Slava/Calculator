@@ -1,31 +1,33 @@
 #include "Command.h"
 
 bool Command::isCommand(std::string &str, Variables &var, File &file, History &history) {
-    if (str == "-help") {
-        std::cout << "|---------------------------------------------------------------------------------|\n";
-        std::cout << "| -help -> Подскажет всевозможные команды                                         |\n";
-        std::cout << "| -outVar all -> Выведет файл с переменными                                       |\n";
-        std::cout << "| -outVar var -> Выведет значение переменной var, можно через запятую [var1,var2] |\n";
-        std::cout << "| -delVar all -> Удалит весь файл с переменными                                   |\n";
-        std::cout << "| -delVar var -> Удалит переменную из файла                                       |\n";
-        std::cout << "| -outHis -> Выведет историю вычислений выражений                                 |\n";
-        std::cout << "| -delHis -> Удалит историю вычислений выражений                                  |\n";
-        std::cout << "| -exit -> Завершит работу калькулятора                                           |\n";
-        std::cout << "|---------------------------------------------------------------------------------|\n\n";
+    if (str == "help()") {
+        std::cout << "\tСправочная информация: \n";
+        std::cout << "\t\tВводить выражение надо после >>>\n";
+        std::cout << "\t\tОтвет выводится после -->\n\n";
+        std::cout << "\t Команды:\n";
+        std::cout << "\t\thelp()           : Выведет справочную информацию и подскажет всевозможные команды\n";
+        std::cout << "\t\tvars()           : Выведет файл с переменными\n";
+        std::cout << "\t\tvars(var)        : Выведет значение переменной var, можно через запятую [var1,var2]\n";
+        std::cout << "\t\tdelete_var(all)  : Удалит весь файл с переменными\n";
+        std::cout << "\t\tdelete_var(var)  : Удалит переменную из var из файла, можно через запятую [var1,var2]\n";
+        std::cout << "\t\thistory()        : Выведет историю вычислений выражений\n";
+        std::cout << "\t\tdelete_history() : Удалит историю вычислений выражений\n";
+        std::cout << "\t\texit()           : Завершит работу калькулятора\n";
         return true;
     } else {
-        std::string cmd1 = str.substr(0, str.find(' '));
-        std::string cmd2 = str.substr(str.find(' ') + 1, str.size());
-        if (cmd1 == "-outVar") {
+        std::string cmd1 = str.substr(0, str.find('(')+1);
+        std::string cmd2 = str.substr(str.find('(') + 1, str.size() - str.find('(') - 2);
+        if (cmd1 == "vars(") {
             outVariables(var.variableAndMeaning, cmd2);
             return true;
-        } else if (cmd1 == "-delVar") {
+        } else if (cmd1 == "delete_var(") {
             delVariables(var, cmd2, file);
             return true;
-        } else if (cmd1 == "-outHis") {
+        } else if (cmd1 + ')' == "history()") {
             history.outHistory(file.pathHistory);
             return true;
-        } else if (cmd1 == "-delHis") {
+        } else if (cmd1 + ')' == "delete_history()") {
             history.clearHistory(file.pathHistory);
             return true;
         }
@@ -35,27 +37,25 @@ bool Command::isCommand(std::string &str, Variables &var, File &file, History &h
 
 void Command::outVariables(std::map<std::string, std::string> &variableAndMeaning, std::string var) {
     if (!variableAndMeaning.empty()) {
-        if (var == "all") {
-            std::cout << "Переменные из файла: \n";
-            std::cout << "Кол-во переменных -> " << variableAndMeaning.size() << "\n";
-            std::cout << "|---------\n";
+        if (var.empty()) {
+            std::cout << "\tКол-во переменных в файле -> " << variableAndMeaning.size() << "\n";
+            std::cout << "\tПеременные из файла: \n";
             for (auto &i : variableAndMeaning) {
-                std::cout << "|" << i.first << " = " << i.second << "\n";
+                std::cout << "\t\t" << i.first << " = " << i.second << "\n";
             }
-            std::cout << "|---------\n";
         } else {
             Vector arrVar = getVariables(var);
             for (int i = 0; i < arrVar.index; i++) {
                 std::string v = arrVar.arrString[i];
                 if (variableAndMeaning.count(v)) {
-                    std::cout << "|" << v << " = " << variableAndMeaning[v] << "\n";
+                    std::cout << "\t\t" << v << " = " << variableAndMeaning[v] << "\n";
                 } else {
-                    std::cout << "Warning: Переменная " << v << " не найдена!\n";
+                    std::cout << "\t\tWarning: Переменная " << v << " не найдена!\n";
                 }
             }
         }
     } else {
-        std::cout << "Не обнаружено переменных в файле!\n";
+        std::cout << "\tНе обнаружено переменных в файле!\n";
     }
 }
 
@@ -68,7 +68,7 @@ void Command::delVariables(Variables &var, std::string &v, File &file) {
             var.variables.index = 0;
             var.variables.size = 100;
             delete[] var.variables.arrString;
-            std::cout << "Файл успешно очищен!\n";
+            std::cout << "\tФайл успешно очищен!\n";
             f.close();
         } else {
             Vector arrVar = getVariables(v);
@@ -78,14 +78,14 @@ void Command::delVariables(Variables &var, std::string &v, File &file) {
                     deleteVarInFile(file, variable);
                     var.variableAndMeaning.erase(var.variableAndMeaning.find(variable));
                     var.variables.arrString = var.variables.delElement(var.variables, variable);
-                    std::cout << "Переменная " << variable << " успешно удалена из файла!\n";
+                    std::cout << "\tПеременная " << variable << " успешно удалена из файла!\n";
                 } else {
-                    std::cout << "Warning: Переменная " << variable << " не найдена!\nУдаление не произошло!\n";
+                    std::cout << "\tWarning: Переменная " << variable << " не найдена!\n\tУдаление не произошло!\n";
                 }
             }
         }
     } else {
-        std::cout << "Файл и так пуст!\n";
+        std::cout << "\tФайл и так пуст!\n";
     }
 }
 

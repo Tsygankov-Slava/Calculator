@@ -59,7 +59,7 @@ Vector RPN::toPostfix(const std::string &expression, Variables &var) {
                 result.push_back(stackOperations.top());
                 stackOperations.pop();
                 if (stackOperations.empty()) {
-                    std::cout << "ОШИБКА: НЕ НАШЛОСЬ ЛЕВОЙ СКОБКИ\n";
+                    std::cout << "\tОШИБКА: НЕ НАШЛОСЬ ЛЕВОЙ СКОБКИ\n";
                     exit(1);
                 }
             }
@@ -149,17 +149,45 @@ std::stack<std::complex<double>> RPN::calcRPN(Vector expRPN) {
     return result;
 }
 
-std::string RPN::convertComplex2String(std::complex<double> a) {
+std::string RPN::convertComplex2String(const std::complex<double> &a) {
     std::string real = std::to_string(a.real());
-    std::string imag = std::to_string(a.imag()) + "i";
-    if (a.real() < 0) {
-        real = "(" + real + ")";
+    if (a.real() != 0) {
+        if (isInt(real)) {
+            real = real.substr(0, real.find('.'));
+        }
+        if (a.real() < 0) {
+            real = '(' + real + ')';
+        }
     }
-    if (a.imag() < 0) {
-        imag = "(" + imag + ")";
+
+    std::string imag = std::to_string(a.imag()) + "i";;
+    if (a.imag() != 0) {
+        if (isInt(imag)) {
+            imag = imag.substr(0, imag.find('.')) + "i";
+        }
+        if (a.imag() < 0) {
+            imag = '(' + imag + ')';
+        }
     }
-    if (std::fabs(a.imag()) < 1e20) {
-        return real + " + " + imag;
+
+    if (a.real() != 0 && a.imag() != 0) {
+        return std::string(real + " + " + imag);
     }
-    return std::to_string(a.real());
+    if (a.real() != 0 && a.imag() == 0) {
+        return real;
+    }
+    if (a.real() == 0 && a.imag() != 0) {
+        return imag;
+    }
+    return "0";
+}
+
+bool RPN::isInt(const std::string &number){
+    std::string str = number.substr(number.find('.') + 1, number.size());
+    for (int i = 0; i < str.size(); ++i) {
+        if (str[i] != '0' && str[i] != 'i') {
+            return false;
+        }
+    }
+    return true;
 }

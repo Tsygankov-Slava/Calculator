@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
     Arguments arguments;
     arguments.checkArguments(argc, argv, exp, file);
 
+    std::cout << "!!! Чтобы получить информацию по пользованию введите команду help()\n";
     while (true) {
         file.checkFileVariablesAccess(var);
         file.checkFileHistoryAccess();
@@ -32,10 +33,10 @@ int main(int argc, char *argv[]) {
         Debug::printExpressionsAfterReplacement(var);
 
         if (exp.empty()) {
-            std::cout << "Введите выражение или команду -> ";
+            std::cout << ">>> ";
             std::getline(std::cin, exp);
-            if (exp == "-exit") {
-                std::cout << "Калькулятор закончил работу!\n";
+            if (exp == "exit()") {
+                std::cout << "\tКалькулятор закончил работу!\n";
                 return 0;
             }
             if (cmd.isCommand(exp, var, file, history)) {
@@ -54,7 +55,7 @@ int main(int argc, char *argv[]) {
                 auto g = rpn.toPostfix(exp, var);
                 std::cout << "\n";
                 auto p = RPN::calcRPN(g);
-                std::cout << "Ответ: " << RPN::convertComplex2String(p.top());
+                std::cout << "--> " << RPN::convertComplex2String(p.top());
                 if (file.checkFileHistoryAccess()) {
                     history.inHistory(file.pathHistory, exp + " = " + RPN::convertComplex2String(p.top()));
                 }

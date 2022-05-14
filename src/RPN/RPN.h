@@ -35,7 +35,8 @@ struct RPN {
     static bool isNumber(std::string &token);
     static bool isVariable(std::string &token, struct Variables var);
     static std::complex<double> atoc(std::string a);
-    static std::string convertComplex2String(std::complex<double> a);
+    static std::string convertComplex2String(const std::complex<double> &a);
     Vector toPostfix(const std::string &expression, Variables &var);
     static std::stack<std::complex<double>> calcRPN(Vector expRPN);
+    static bool isInt(const std::string &number);
 };

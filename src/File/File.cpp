@@ -29,8 +29,6 @@ std::map<std::string, std::string> File::getText() {
 void File::checkFileVariablesAccess(Variables &var) {
     if (pathVariables != " ") {
         var.variableAndMeaning = getText();
-    } else {
-        std::cout << "Warning: Нет доступа к файлу с переменными\n";
     }
 }
 
@@ -39,7 +37,7 @@ void File::addVariable(std::string &str) {
     file.open(pathVariables, std::ios::app);
     file << "\n" + str;
     file.close();
-    std::cout << "Переменная успешно добавлена!\n";
+    std::cout << "\tПеременная успешно добавлена!\n";
 }
 
 bool File::checkFileHistoryAccess() {
