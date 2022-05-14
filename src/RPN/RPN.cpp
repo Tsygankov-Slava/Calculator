@@ -160,7 +160,8 @@ std::string RPN::convertComplex2String(const std::complex<double> &a) {
         }
     }
 
-    std::string imag = std::to_string(a.imag()) + "i";;
+    std::string imag = std::to_string(a.imag()) + "i";
+    ;
     if (a.imag() != 0) {
         if (isInt(imag)) {
             imag = imag.substr(0, imag.find('.')) + "i";
@@ -182,7 +183,7 @@ std::string RPN::convertComplex2String(const std::complex<double> &a) {
     return "0";
 }
 
-bool RPN::isInt(const std::string &number){
+bool RPN::isInt(const std::string &number) {
     std::string str = number.substr(number.find('.') + 1, number.size());
     for (int i = 0; i < str.size(); ++i) {
         if (str[i] != '0' && str[i] != 'i') {

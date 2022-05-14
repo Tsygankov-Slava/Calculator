@@ -16,7 +16,7 @@ bool Command::isCommand(std::string &str, Variables &var, File &file, History &h
         std::cout << "\t\texit()           : Завершит работу калькулятора\n";
         return true;
     } else {
-        std::string cmd1 = str.substr(0, str.find('(')+1);
+        std::string cmd1 = str.substr(0, str.find('(') + 1);
         std::string cmd2 = str.substr(str.find('(') + 1, str.size() - str.find('(') - 2);
         if (cmd1 == "vars(") {
             outVariables(var.variableAndMeaning, cmd2);
