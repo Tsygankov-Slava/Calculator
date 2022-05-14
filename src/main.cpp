@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     Arguments arguments;
     arguments.checkArguments(argc, argv, exp, file);
 
-    std::cout << "!!! Чтобы получить информацию по пользованию введите команду help()\n";
+    std::cout << "Чтобы получить информацию по пользованию введите команду help()\n";
     while (true) {
         file.checkFileVariablesAccess(var);
         file.checkFileHistoryAccess();
