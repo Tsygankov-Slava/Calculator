@@ -6,9 +6,14 @@
 #include <map>
 #include <string>
 
+#include "../Variables/Variables.h"
 
 struct File {
-    std::string path = "../src/File/variables.txt";
-
+    std::string pathVariables = " ";
+    std::string pathHistory = " ";
     std::map<std::string, std::string> getText();
+
+    void checkFileVariablesAccess(Variables &var);
+    bool checkFileHistoryAccess();
+    void addVariable(std::string &str);
 };

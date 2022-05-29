@@ -16,4 +16,5 @@ typedef struct Variables {
     void ReplacementVariables();
     bool isVariable(std::string &token);
     void changeVariablesInExpression(std::string &exp);
+    bool variableDefinition(std::string &str);
 } Variables;

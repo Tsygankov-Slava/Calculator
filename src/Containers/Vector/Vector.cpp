@@ -47,3 +47,17 @@ void Vector::printVectorInt() {
     }
     std::cout << "Size: " << size << "\n";
 }
+
+std::string *Vector::delElement(Vector &var, std::string &el) {
+    std::string *arrNew = new std::string[var.size];
+    int count = 0;
+    for (int i = 0; i < var.index; ++i) {
+        if (var.arrString[i] != el) {
+            arrNew[count] = var.arrString[i];
+            ++count;
+        }
+    }
+    delete[] var.arrString;
+    var.index = count;
+    return arrNew;
+}

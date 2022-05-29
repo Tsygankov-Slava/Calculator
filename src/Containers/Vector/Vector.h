@@ -19,6 +19,7 @@ public:
     std::string *increaseVectorString();
     int *increaseVectorInt();
 
+    std::string *delElement(Vector &var, std::string &el);
     void printVectorString();
     void printVectorInt();
 };
