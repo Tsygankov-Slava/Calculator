@@ -31,6 +31,8 @@ bool Command::isCommand(std::string &str, Variables &var, File &file, History &h
         } else if (cmd1 + ')' == "delete_history()") {
             history.clearHistory(file.pathHistory);
             return true;
+        } else if (cmd1[cmd1.size()-1] == '(') {
+            throw std::invalid_argument("Error: Неизвестная функция -> " + cmd1 + ')');
         }
     }
     return false;

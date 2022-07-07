@@ -45,7 +45,13 @@ int main(int argc, char *argv[]) {
                 std::cout << "Чтобы получить информацию по пользованию введите команду help()\n";
                 continue;
             }
-            if (cmd.isCommand(exp, var, file, history)) {
+            try {
+                if (cmd.isCommand(exp, var, file, history)) {
+                    exp = "";
+                    continue;
+                }
+            } catch (const std::invalid_argument& error) {
+                std::cout << error.what() << "\n";
                 exp = "";
                 continue;
             }
@@ -57,17 +63,21 @@ int main(int argc, char *argv[]) {
             if (var.variableDefinition(exp)) {
                 file.addVariable(exp);
             } else {
-                var.changeVariablesInExpression(exp);
-                auto g = rpn.toPostfix(exp, var);
-                std::cout << "\n";
-                auto p = RPN::calcRPN(g);
-                std::cout << "--> " << RPN::convertComplex2String(p.top());
-                if (file.checkFileHistoryAccess()) {
-                    history.inHistory(file.pathHistory, exp + " = " + RPN::convertComplex2String(p.top()));
+                try {
+                    var.changeVariablesInExpression(exp);
+                    auto g = rpn.toPostfix(exp, var);
+                    std::cout << "\n";
+                    auto p = RPN::calcRPN(g);
+                    std::cout << "--> " << RPN::convertComplex2String(p.top());
+                    if (file.checkFileHistoryAccess()) {
+                        history.inHistory(file.pathHistory, exp + " = " + RPN::convertComplex2String(p.top()));
+                    }
+                } catch (const std::invalid_argument& error) {
+                    std::cout << error.what();
                 }
             }
+            std::cout << "\n";
+            exp = "";
         }
-        std::cout << "\n";
-        exp = "";
     }
 }

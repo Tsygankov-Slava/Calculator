@@ -1,3 +1,5 @@
+#include <regex>
+
 #include "Variables.h"
 
 void Variables::initVariables() {
@@ -34,6 +36,7 @@ void Variables::ReplacementVariables() {
 void Variables::changeVariablesInExpression(std::string &exp) {
     int index = 0, sizeExp = exp.size();
     std::string token;
+    std::set<std::string> operationsAndFunctions = {"+", "-", "*", "/", "^", "_", "phase", "mag", "sin", "cos", "log", "sqrt", "exp", "real", "imag", "(", ")", "E", "PI"};
     while (index < sizeExp) {
         int oldIndex = index;
         token = Token::readToken(exp, index);
@@ -41,7 +44,24 @@ void Variables::changeVariablesInExpression(std::string &exp) {
             exp.replace(oldIndex, index - oldIndex, "(" + variableAndMeaning[token] + ")");
             sizeExp = exp.size();
             index = 0;
+            continue;
+        } else {
+            if (std::all_of(token.begin(), token.end(), [](const char& ch) { return isdigit(ch); })) {
+                continue;
+            }
+
+            bool flag = false;
+            for (auto &oAf : operationsAndFunctions) {
+                if (token == oAf) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                continue;
+            }
         }
+        throw std::invalid_argument( "Error: Неизвестная переменная -> " + token);
     }
 }
 
