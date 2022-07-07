@@ -39,6 +39,12 @@ int main(int argc, char *argv[]) {
                 std::cout << "\tКалькулятор закончил работу!\n";
                 return 0;
             }
+            if (exp == "clear()") {
+                system("clear");
+                exp = "";
+                std::cout << "Чтобы получить информацию по пользованию введите команду help()\n";
+                continue;
+            }
             if (cmd.isCommand(exp, var, file, history)) {
                 exp = "";
                 continue;

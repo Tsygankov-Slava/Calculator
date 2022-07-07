@@ -13,6 +13,7 @@ bool Command::isCommand(std::string &str, Variables &var, File &file, History &h
         std::cout << "\t\tdelete_var(var)  : Удалит переменную из var из файла, можно через запятую [var1,var2]\n";
         std::cout << "\t\thistory()        : Выведет историю вычислений выражений\n";
         std::cout << "\t\tdelete_history() : Удалит историю вычислений выражений\n";
+        std::cout << "\t\tclear()          : Очищает консоль\n";
         std::cout << "\t\texit()           : Завершит работу калькулятора\n";
         return true;
     } else {
