@@ -1,5 +1,3 @@
-#include <regex>
-
 #include "Variables.h"
 
 void Variables::initVariables() {

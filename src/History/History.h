@@ -10,4 +10,3 @@ struct History {
     void outHistory(std::string &path);
     void clearHistory(std::string &path);
 };
-

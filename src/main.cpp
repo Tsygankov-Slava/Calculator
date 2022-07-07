@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
 
         Debug::printExpressionsAfterReplacement(var);
 
+        bool expIsArg = false;
         if (exp.empty()) {
             std::cout << ">>> ";
             std::getline(std::cin, exp);
@@ -57,6 +58,7 @@ int main(int argc, char *argv[]) {
             }
         } else {
             std::cout << "Полученное выражение -> " << exp << "\n";
+            expIsArg = true;
         }
 
         if (!exp.empty()) {
@@ -78,6 +80,9 @@ int main(int argc, char *argv[]) {
             }
             std::cout << "\n";
             exp = "";
+            if (expIsArg) {
+                break;
+            }
         }
     }
 }
