@@ -35,19 +35,12 @@ $ git clone https://github.com/Tsygankov-Slava/Calculator.git
 $ cd Calculator
 ```
 
-3. Создадим папку с именем `build`, куда будем собирать проект и перейдём в неё
+3. Выполним команду `make` для сборки проекта
 
 ```
-$ mkdir build
-$ cd build
-```
-
-4. Теперь следует выполнить команду `cmake`, куда передадим в аргумент файлы проекта, чтобы у нас создались необходимые
-   файлы для самой сборки
-
-```
-$ cmake ../
--- The CXX compiler identification is AppleClang 13.0.0.13000029
+$ make
+mkdir build; cd build; cmake ../; make;
+-- The CXX compiler identification is AppleClang 13.0.0.13000027
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
@@ -55,26 +48,23 @@ $ cmake ../
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/tv/Desktop/Calculator/build
-```
-
-5. Выполним команду `make` для сборки проекта
-
-```
-$ make
-[ 11%] Building CXX object CMakeFiles/Calculator.dir/src/main.cpp.o
-[ 22%] Building CXX object CMakeFiles/Calculator.dir/src/File/File.cpp.o
-[ 33%] Building CXX object CMakeFiles/Calculator.dir/src/Variables/Variables.cpp.o
-[ 44%] Building CXX object CMakeFiles/Calculator.dir/src/Token/Token.cpp.o
-[ 55%] Building CXX object CMakeFiles/Calculator.dir/src/RPN/RPN.cpp.o
-[ 66%] Building CXX object CMakeFiles/Calculator.dir/src/isDebug/isDebug.cpp.o
-[ 77%] Building CXX object CMakeFiles/Calculator.dir/src/Debug/Debug.cpp.o
-[ 88%] Building CXX object CMakeFiles/Calculator.dir/src/Containers/Vector/Vector.cpp.o
+-- Build files have been written to: /Users/tv/Desktop/Programming/Programming on C++/Calculator/build
+[  8%] Building CXX object CMakeFiles/Calculator.dir/src/main.cpp.o
+[ 16%] Building CXX object CMakeFiles/Calculator.dir/src/File/File.cpp.o
+[ 25%] Building CXX object CMakeFiles/Calculator.dir/src/Variables/Variables.cpp.o
+[ 33%] Building CXX object CMakeFiles/Calculator.dir/src/Token/Token.cpp.o
+[ 41%] Building CXX object CMakeFiles/Calculator.dir/src/RPN/RPN.cpp.o
+[ 50%] Building CXX object CMakeFiles/Calculator.dir/src/isDebug/isDebug.cpp.o
+[ 58%] Building CXX object CMakeFiles/Calculator.dir/src/Debug/Debug.cpp.o
+[ 66%] Building CXX object CMakeFiles/Calculator.dir/src/Containers/Vector/Vector.cpp.o
+[ 75%] Building CXX object CMakeFiles/Calculator.dir/src/Arguments/Arguments.cpp.o
+[ 83%] Building CXX object CMakeFiles/Calculator.dir/src/Command/Command.cpp.o
+[ 91%] Building CXX object CMakeFiles/Calculator.dir/src/History/History.cpp.o
 [100%] Linking CXX executable Calculator
 [100%] Built target Calculator
 ```
 
-6. Наш проект собрался и исполняемый файл лежит в папке `build`, откуда в дальнейшем мы будем запускать наш
+4. Наш проект собрался и исполняемый файл лежит в папке `build`, откуда в дальнейшем мы будем запускать наш
    проект ([см. пункт "Пример использования"](#пример-использовния))
 
 [🔝Оглавление](#оглавление)
